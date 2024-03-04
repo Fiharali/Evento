@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,3 +36,14 @@ Route::get('register',[AuthController::class,'RegisterPage'])->name('register.pa
 Route::post('login',[AuthController::class,'login'])->name('login');
 Route::post('register',[AuthController::class,'register'])->name('register');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+///
+
+Route::resources([
+    'categories' => CategoryController::class,
+]);
+
+
+
+
+
