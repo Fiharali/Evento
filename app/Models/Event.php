@@ -18,4 +18,13 @@ class Event extends Model implements HasMedia
     public const IS_PENDING=0;
     public const ACCEPTATION_AUTO=1;
     public const ACCEPTATION_MAN=0;
+
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function organisator(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

@@ -48,7 +48,7 @@
         <div class="entry-header">
             <div class="entry-title">
                 <p>JUST THE BEST</p>
-                <h2>Early bird tickets</h2>
+                <h2>{{$event->title}}</h2>
             </div><!-- entry-title -->
         </div><!-- entry-header -->
 
@@ -65,33 +65,44 @@
                                 <div class="single-event-details">
                                     <div class="single-event-details-row">
                                         <label>Start:</label>
-                                        <p>June 17 @ 09:00 am</p>
+                                        <p>{{ \Carbon\Carbon::parse($event->date)->format('D-M') }}</p>
+
                                     </div>
 
                                     <div class="single-event-details-row">
-                                        <label>End:</label>
-                                        <p>June 22 @ 07:30 am</p>
+                                        <label>places left:</label>
+                                        <p>{{$event->places_number}} </p>
                                     </div>
 
                                     <div class="single-event-details-row">
                                         <label>Price:</label>
-                                        <p class="sold-out">$89 <span>Sold Out</span></p>
+                                        <p class="sold-out">{{$event->price}} £ <span>Sold Out</span></p>
                                     </div>
 
                                     <div class="single-event-details-row">
                                         <label>Categories:</label>
-                                        <p>Festivals</p>
+                                        <p>{{$event->category->name}}</p>
+                                    </div>
+                                    <div class="single-event-details-row">
+                                        <label>Place:</label>
+                                        <p>{{$event->place}}</p>
+                                    </div>
+                                    <div class="single-event-details-row">
+                                        <label>Organisator:</label>
+                                        <p>{{$event->organisator->name}}</p>
                                     </div>
 
                                     <div class="single-event-details-row">
-                                        <label>Tags:</label>
-                                        <p><a href="#">festivals</a>, <a href="#">music</a>, <a href="#">concert</a></p>
+                                        <label>description:</label>
+                                        <p>{{$event->description}}</p>
                                     </div>
                                 </div>
 
                                 <div class="single-event-map">
                                     <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=university of san francisco&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                    <img src="{{ $event->getFirstMediaUrl('images') }}" alt="Event Image">
                                 </div>
+
                             </div>
                         </div><!-- .tab-content -->
 
@@ -109,11 +120,11 @@
                             <h3 class="entry-title"> Gold Ticket</h3>
                             <span class="mt-2 mt-lg-0"> Vip Entry</span>
                             <div class="ticket-price mt-3 mt-lg-0">
-                                $119
+                                {{$event->price}}$
                             </div><!-- ticket-price -->
                         </div><!-- ticket-type -->
 
-                        <div class="flex align-items-center">
+                        <form class="flex align-items-center">
                             <div class="number-of-tickets flex justify-content-between align-items-center">
                                 <span class="decrease-ticket">-</span>
                                 <input type="number" name="number" disabled value="1" class="ticket-count ">
@@ -121,7 +132,7 @@
                             </div><!-- number-of-tickets -->
 
                             <div class="clear-ticket-count">Clear</div>
-                        </div><!-- flex -->
+                        </form><!-- flex -->
                         <input type="submit" name="" value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"><!-- btn -->
                     </div><!-- ticket-row -->
 

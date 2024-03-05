@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\EventController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Home.index');
-});
+Route::get('/', [\App\Http\Controllers\EventController::class,'index']);
+Route::get('/details/{event}', [\App\Http\Controllers\EventController::class,'show'])->name('event.details');
 Route::get('/details', function () {
     return view('Home.details');
 });

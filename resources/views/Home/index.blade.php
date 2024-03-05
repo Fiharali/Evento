@@ -269,73 +269,19 @@
         <div class="next-event-slider-wrap">
             <div class="swiper-container next-event-slider container">
                 <div class=" row ">
-
+                 @foreach($events as $event)
                     <div class="swiper-slide col-lg-4 col-md-6 col-sm-12 mt-2">
                         <div class="next-event-content">
                             <figure class="featured-image">
-                                <img src="assets/images/next-event-1.jpg" alt="" class="img-fluid d-block" style="height: 260px;">
-                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
-                                    <h3>Welcoming Party 2018</h3>
-                                    <p>Green Palace, 22 Street, 23-28, Los Angeles California</p>
+                                <img src="{{ $event->getFirstMediaUrl('images') }}" alt="evebt" class="img-fluid d-block" style="height: 260px;">
+                                <a href="{{route('event.details',$event->id)}}" class="entry-content flex flex-column justify-content-center align-items-center">
+                                    <h3>{{$event->title}}</h3>
+                                    <p>{{$event->place}}</p>
                                 </a>
                             </figure><!-- featured-image -->
                         </div><!-- next-event-content -->
                     </div>
-                    <div class="swiper-slide col-lg-4 col-md-6 col-sm-12 mt-2">
-                        <div class="next-event-content">
-                            <figure class="featured-image">
-                                <img src="assets/images/next-event-2.jpg" alt="" class="img-fluid d-block" style="height: 260px;">
-                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
-                                    <h3>Next Event 2</h3>
-                                    <p>Event location</p>
-                                </a>
-                            </figure><!-- featured-image -->
-                        </div><!-- next-event-content -->
-                    </div>
-                    <div class="swiper-slide col-lg-4 col-md-6 col-sm-12 mt-2">
-                        <div class="next-event-content">
-                            <figure class="featured-image">
-                                <img src="assets/images/event1.png" alt="" class="img-fluid d-block" style="height: 260px;">
-                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
-                                    <h3>Next Event 3</h3>
-                                    <p>Event location</p>
-                                </a>
-                            </figure><!-- featured-image -->
-                        </div><!-- next-event-content -->
-                    </div>
-                    <div class="swiper-slide col-lg-4 col-md-6 col-sm-12 mt-2">
-                        <div class="next-event-content">
-                            <figure class="featured-image">
-                                <img src="assets/images/next-event-1.jpg" alt="" class="img-fluid d-block" style="height: 260px;">
-                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
-                                    <h3>Welcoming Party 2018</h3>
-                                    <p>Green Palace, 22 Street, 23-28, Los Angeles California</p>
-                                </a>
-                            </figure><!-- featured-image -->
-                        </div><!-- next-event-content -->
-                    </div>
-                    <div class="swiper-slide col-lg-4 col-md-6 col-sm-12 mt-2">
-                        <div class="next-event-content">
-                            <figure class="featured-image">
-                                <img src="assets/images/next-event-3.jpg" alt="" class="img-fluid d-block" style="height: 260px;">
-                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
-                                    <h3>Next Event 2</h3>
-                                    <p>Event location</p>
-                                </a>
-                            </figure><!-- featured-image -->
-                        </div><!-- next-event-content -->
-                    </div>
-                    <div class="swiper-slide col-lg-4 col-md-6 col-sm-12 mt-2">
-                        <div class="next-event-content">
-                            <figure class="featured-image">
-                                <img src="assets/images/event1.png" alt="" class="img-fluid d-block" style="height: 260px;">
-                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
-                                    <h3>Next Event 3</h3>
-                                    <p>Event location</p>
-                                </a>
-                            </figure><!-- featured-image -->
-                        </div><!-- next-event-content -->
-                    </div>
+                  @endforeach
                 </div>
             </div>
 
