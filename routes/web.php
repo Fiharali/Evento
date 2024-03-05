@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\EventController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,8 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middle
 
 Route::resources([
     'categories' => CategoryController::class,
+    'events' => EventController::class,
+    'users' => EventController::class,
 ]);
 
 
