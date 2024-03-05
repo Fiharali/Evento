@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('status', [User::IS_APPROVED, User::IS_RESTRICT])->default(User::IS_APPROVED);
             $table->string('password');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

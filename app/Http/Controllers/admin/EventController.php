@@ -7,6 +7,7 @@ use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Category;
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -17,7 +18,6 @@ class EventController extends Controller
     {
         $events=Event::paginate(3);
         $categories=Category::all();
-
         return view('Admin.events.index',compact('events','categories'));
     }
 
@@ -29,7 +29,11 @@ class EventController extends Controller
     public function store(StoreEventRequest $request)
     {
 
-        Event::create($request->all());
+       $event= Event::create(array_merge($request->all(),['user_id' => Auth::id()]));
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $event->addMedia($file)->toMediaCollection('images');
+        }
         return redirect()->back()->with(['success' =>' event add successful']);
     }
 
@@ -49,5 +53,12 @@ class EventController extends Controller
     {
         $event->delete();
         return redirect()->back()->with(['success' =>' event deleted successful']);
+    }
+
+
+    public function myEvents(){
+        $events = Event::where('user_id', Auth::id())->paginate(3);
+        $categories=Category::all();
+        return view('Admin.events.index',compact('events','categories'));
     }
 }

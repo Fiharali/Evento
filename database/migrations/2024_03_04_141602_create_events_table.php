@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('places_number');
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

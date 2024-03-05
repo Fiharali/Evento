@@ -4,13 +4,16 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable,SoftDeletes;
+
+
 
     /**
      * The attributes that are mass assignable.
@@ -41,6 +44,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'deleted_at' => 'datetime',
     ];
 
     public function  roles(){
@@ -53,6 +57,10 @@ class User extends Authenticatable
     public const IS_APPROVED=1;
     public const IS_RESTRICT=0;
 
+    public function isAdmin()
+    {
+        return $this->roles()->where('name', 'admin')->exists();
+    }
 
 
 }

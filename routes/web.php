@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\EventController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,8 +44,10 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middle
 Route::resources([
     'categories' => CategoryController::class,
     'events' => EventController::class,
-    'users' => EventController::class,
+    'users' => UserController::class,
 ]);
+Route::get('my-events',[EventController::class,'myEvents'])->name('my.events');
+
 
 
 

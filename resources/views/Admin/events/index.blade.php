@@ -114,7 +114,7 @@
                                 <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{$event->id}}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$event->title}}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">{{$event->price}}£</span>
+                                    <img src="{{$event->getFirstMediaUrl('images') }}" alt="Event Image"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">{{$event->price}}£</span>
                                 </td>
 
 
@@ -231,6 +231,7 @@
                                                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >descriptions</label>
                                                             <textarea  name="description" id="description" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="add description  " >{{$event->description}}</textarea>
                                                         </div>
+                                                        @can('isAdmin')
                                                         <div class="col-span-6 sm:col-span-6 ">
                                                             <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status </label>
                                                             <select name="status" id="status"   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  >
@@ -239,6 +240,7 @@
                                                                 <option value="1" @selected($event->status==1    )>Approved</option>
                                                             </select>
                                                         </div>
+                                                            @endcan
                                                     </div>
 
 
@@ -293,7 +295,7 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-6 space-y-6">
-                    <form action="{{route('events.store')}}" method="post">
+                    <form action="{{route('events.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3 ">
@@ -334,18 +336,33 @@
                                         <option value="0">Acceptation manualle</option>
                                 </select>
                             </div>
-                            <div class="col-span-6 sm:col-span-6 ">
-                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >descriptions</label>
-                                <textarea  name="description" id="description" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="add description  " >{{old('description')}}</textarea>
+                            <div class="col-span-6 sm:col-span-3 ">
+                                <textarea  name="description" rows="6" id="description" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="add description  " >{{old('description')}}</textarea>
                             </div>
-{{--                            <div class="col-span-6 sm:col-span-6 hidden">--}}
-{{--                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status </label>--}}
-{{--                                <select name="status" id="status"   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  >--}}
-{{--                                    <option value="">choice status</option>--}}
-{{--                                    <option value="0">Pending</option>--}}
-{{--                                    <option value="1">Approved</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
+
+                            <div class="flex items-center justify-center w-full col-span-6 sm:col-span-3">
+                                <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-25 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                        <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                        </svg>
+                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                    </div>
+                                    <input id="dropzone-file" type="file" name="image" class="hidden" />
+                                </label>
+                            </div>
+
+                        @can('isAdmin')
+                            <div class="col-span-6 sm:col-span-6 ">
+                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status </label>
+                                <select name="status" id="status"   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  >
+                                    <option value="">choice status</option>
+                                    <option value="0">Pending</option>
+                                    <option value="1">Approved</option>
+                                </select>
+                            </div>
+                          @endcan
                         </div>
                         <!-- Modal footer -->
                         <div class="items-center p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
