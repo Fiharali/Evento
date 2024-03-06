@@ -32,7 +32,7 @@ class StoreEventRequest extends FormRequest
             'date' => 'required|date',
             'category_id' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            //'image' => 'required',
           //'status' => 'required|in:' . Event::IS_APPROVED . ',' . Event::IS_PENDING,
           'acceptation' => 'required|in:' . Event::ACCEPTATION_MAN . ',' . Event::ACCEPTATION_AUTO,
         ];

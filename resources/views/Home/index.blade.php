@@ -260,7 +260,7 @@
                 <div class="col-12">
                     <div class="entry-title">
                         <p>JUST THE BEST</p>
-                        <h2>Our Next Events</h2>
+                        <h2>Our Next Events </h2>
                     </div><!-- entry-title -->
                 </div><!-- col-12 -->
             </div><!-- row -->
@@ -268,7 +268,18 @@
 
         <div class="next-event-slider-wrap">
             <div class="swiper-container next-event-slider container">
-                <div class=" row ">
+               <div class="d-flex align-items-start ">
+                   <select class="form-select form-select-lg mb-3 py-2 px-5  " id="select-cat" aria-label=".form-select-lg example">
+                       <option selected value="0">All Categories</option>
+                       @foreach($categories as $category)
+                           <option value="{{$category->id}}">{{$category->name}}</option>
+                       @endforeach
+                   </select>
+                   <input type="text" placeholder="search by title or lieu" id="search-input" class=" py-2 mx-1 px-lg-5  "/>
+{{--                   <input type="date" id="search-from" class=" py-2 mx-1  px-5"/>--}}
+{{--                   <input type="date"  id="search-to" class=" py-2 mx-1  px-5"/>--}}
+               </div>
+                <div class="row " id="events-container">
                  @foreach($events as $event)
                     <div class="swiper-slide col-lg-4 col-md-6 col-sm-12 mt-2">
                         <div class="next-event-content">
@@ -366,4 +377,50 @@
         </div><!-- container -->
     </div><!-- home-page-last-news -->
 </div>
+<script>
+    const searchInput = document.querySelector('#search-input');
+    const selectCat = document.querySelector('#select-cat');
+    //const searchFrom = document.querySelector('#search-from');
+    //const searchTo = document.querySelector('#search-to');
+    const eventsContainer = document.querySelector('#events-container');
+
+    searchInput.addEventListener('keyup', fetchData);
+    selectCat.addEventListener('change', fetchData);
+    selectCat.addEventListener('input', fetchData);
+    searchTo.addEventListener('input', fetchData);
+
+    function fetchData() {
+        const selectedOption = selectCat.value;
+        const query = searchInput.value;
+       // console.log(searchFrom.value,searchTo.value)
+
+        fetch(`/search?query=${query}&category=${selectedOption}`)
+            .then(response => response.json())
+            .then(data => {
+                eventsContainer.innerHTML = '';
+                data.forEach(event => {
+                    const eventHtml = `
+                    <div class="swiper-slide col-lg-4 col-md-6 col-sm-12 mt-2">
+                        <div class="next-event-content">
+                            <figure class="featured-image">
+                                <img src="${event.imageUrl}" alt="{{ $event->title }}" class="img-fluid d-block" style="height: 260px;">
+                                <a href="/events/${event.id}" class="entry-content flex flex-column justify-content-center align-items-center">
+                                    <h3>${event.title}</h3>
+                                    <p>${event.place}</p>
+                                </a>
+                            </figure><!-- featured-image -->
+                        </div><!-- next-event-content -->
+                    </div>
+                `;
+                    eventsContainer.innerHTML += eventHtml;
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+</script>
+
+
+
 @include('Home.partials.footer')
+

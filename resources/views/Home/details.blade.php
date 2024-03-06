@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome-all.min.css')}}">
@@ -124,16 +125,19 @@
                             </div><!-- ticket-price -->
                         </div><!-- ticket-type -->
 
-                        <form class="flex align-items-center">
+                        <form class="flex align-items-center" id="reservation-form" method="post" action="{{route('reservation.store')}}">
+                            @csrf
                             <div class="number-of-tickets flex justify-content-between align-items-center">
                                 <span class="decrease-ticket">-</span>
-                                <input type="number" name="number" disabled value="1" class="ticket-count ">
+                                <input type="number" name="number_ticket"  value="1" class="ticket-count ">
+                                <input type="hidden" name="event_id"   value="{{$event->id}}" >
+                                <input type="hidden" name="user_id"    value="{{Auth::id()}}" >
+                                <input type="hidden" name="status"    value="{{$event->acceptation}}" >
                                 <span class="increase-ticket">+</span>
                             </div><!-- number-of-tickets -->
-
                             <div class="clear-ticket-count">Clear</div>
+                            <input type="submit"  value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"><!-- btn -->
                         </form><!-- flex -->
-                        <input type="submit" name="" value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"><!-- btn -->
                     </div><!-- ticket-row -->
 
               </div><!-- event-tickets -->
@@ -141,4 +145,37 @@
         </div><!-- row -->
     </div><!-- container -->
 </div><!-- main-content -->
+<script>
+    document.getElementById('reservation-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Display a SweetAlert confirmation dialog
+        Swal.fire({
+            title: 'Confirm Reservation',
+            text: 'Are you sure you want to make this reservation?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, make reservation',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            // If user confirms, submit the form
+            if (result.isConfirmed) {
+                this.submit(); // Submit the form
+            }
+        });
+    });
+
+
+    const successMessage = {{ json_encode(session('success')) }};
+    if (successMessage) {
+        // Display success message using SweetAlert
+        Swal.fire({
+            title: 'Success!',
+            text: 'Your reservation was successful.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    }
+
+</script>
 @include('Home.partials.footer')

@@ -43,6 +43,10 @@ class EventController extends Controller
     public function update(UpdateEventRequest $request, Event $event)
     {
         $event->update($request->all());
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $event->addMedia($file)->toMediaCollection('images');
+        }
         return redirect()->back()->with(['success' =>' Event updated successful']);
     }
 
