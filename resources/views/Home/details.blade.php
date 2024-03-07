@@ -44,6 +44,16 @@
     </div><!-- container -->
 </div><!-- page-header -->
 
+@session('success')
+<div class="alert alert-success w-50 mx-auto position-sticky top-50 start-50 translate-middle bg-white p-4" role="alert" style="z-index: 100;">
+    <button type="button" class="btn-close position-absolute top-0 end-0" data-bs-dismiss="alert" aria-label="Close"></button>
+
+    <h4 class="alert-heading">Well done!</h4>
+    <p>{{$value}}</p>
+    <hr>
+    <p class="mb-0"></p>
+</div>
+@endsession
 <div class="main-content">
     <div class="container">
         <div class="entry-header">

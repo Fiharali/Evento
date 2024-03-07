@@ -386,8 +386,8 @@
 
     searchInput.addEventListener('keyup', fetchData);
     selectCat.addEventListener('change', fetchData);
-    selectCat.addEventListener('input', fetchData);
-    searchTo.addEventListener('input', fetchData);
+  //  selectCat.addEventListener('input', fetchData);
+  //  searchTo.addEventListener('input', fetchData);
 
     function fetchData() {
         const selectedOption = selectCat.value;

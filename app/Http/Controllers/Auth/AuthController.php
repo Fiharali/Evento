@@ -24,7 +24,7 @@ class AuthController extends Controller
 
             $user = Auth::user();
             if ($user->roles->contains('name', 'admin') || $user->roles->contains('name', 'organisator')) {
-                return redirect()->route('admin');
+                return redirect('/');
             } else {
                 return redirect('/');
             }

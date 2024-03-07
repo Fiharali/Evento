@@ -51,6 +51,13 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function  events(){
+        return $this->belongsToMany(Event::class,'reservations');
+    }
+
+
+
+
     public const IS_Admin = 1;
     public const IS_ORGANISATOR=2;
     public const IS_VISITOR=3;

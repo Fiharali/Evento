@@ -49,7 +49,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
-        $user->roles()->attach($request->role);
+        $user->roles()->sync($request->role);
         return redirect()->back()->with(['success' =>' User updated successful']);
     }
 

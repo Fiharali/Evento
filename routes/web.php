@@ -4,7 +4,6 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\EventController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +50,7 @@ Route::middleware('guest')->group(function () {
 
     Route::middleware('auth')->group(function () {
         Route::post('reservations',[ReservationController::class,'store'])->name('reservations.store');
+        Route::get('get-ticket',[ReservationController::class,'ticket'])->name('reservations.ticket');
         Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
     });
 
@@ -59,12 +59,15 @@ Route::middleware('guest')->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('users', UserController::class);
         Route::get('reservations',[ReservationController::class,'index'])->name('reservations.index');
+        Route::get('events',[EventController::class,'index'])->name('events.index');
         Route::patch('events/{event}',[EventController::class,'update'])->name('events.update');
+
+
 
     });
 
     Route::middleware(['auth','can:isOrganisator'])->group(function () {
-        Route::resource('events', EventController::class);
+        Route::resource('events', EventController::class)->except('index');
         Route::get('my-events',[EventController::class,'myEvents'])->name('my.events');
         Route::get('my-reservations',[ReservationController::class,'myReservation'])->name('my.reservations');
         Route::patch('reservations/{reservation}',[ReservationController::class,'update'])->name('reservations.update');

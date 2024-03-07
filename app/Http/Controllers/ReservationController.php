@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Reservation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class ReservationController extends Controller
 {
@@ -22,7 +25,15 @@ class ReservationController extends Controller
     public function store(StoreReservationRequest $request)
     {
         Reservation::create($request->all());
-        return redirect()->back()->with(['success'=>'success']);
+        if ($request->status==1){
+            $event = Event::find($request->event_id);
+            $pdf = PDF::loadView('Home.ticket.ticket', ['event' => $event]);
+            return $pdf->download('ticket.pdf');
+           // return redirect()->back()->with(['success'=>'Your Reservation has Completed With Success , You Can Get Your Ticket Now  ']);
+
+        }else{
+            return redirect()->back()->with(['success'=>"Your Reservation Completed With Success , But You Can't Get Your Ticket Now  until you reservation confirmed "]);
+        }
     }
 
     public function update(UpdateReservationRequest $request, Reservation $reservation)
@@ -41,8 +52,18 @@ class ReservationController extends Controller
 
 
     public function myReservation(){
-        $reservations = Reservation::where('user_id', Auth::id())->paginate(3);
+        $reservations = Reservation::whereHas('event', function ($query) {
+            $query->where('user_id', Auth::id());
+        })->paginate(3);
         return view('Admin.reservation.index',compact('reservations'));
+    }
+
+    public function getTicket($eventId)
+    {
+
+        $event = Event::find($eventId);
+        $pdf = PDF::loadView('Home.ticket.ticket', ['event' => $event]);
+        return $pdf->download('ticket.pdf');
     }
 
 }

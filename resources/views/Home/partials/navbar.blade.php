@@ -19,8 +19,19 @@
                     <li><a  href="/">HOME</a></li>
                     <li><a href="about">About</a></li>
                     <li><a href="organisators">Organisators</a></li>
-                    <li><a href="#">BLOG</a></li>
-                    <li><a href="#">CONTACT</a></li>
+                    @auth
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="bg-transparent text-white border-0 ms-3" >LogOut</button>
+                            </form>
+                        </li>
+                    @else
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register" class="">Get Started</a></li>
+
+                    @endauth
+
                     <li><a href="#"><i class="fas fa-search"></i></a></li>
                 </ul><!-- flex -->
             </nav><!-- .site-navigation -->
