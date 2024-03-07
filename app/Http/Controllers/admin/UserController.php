@@ -39,10 +39,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
-    {
-        //
-    }
+
 
 
 
@@ -52,6 +49,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
+        $user->roles()->attach($request->role);
         return redirect()->back()->with(['success' =>' User updated successful']);
     }
 

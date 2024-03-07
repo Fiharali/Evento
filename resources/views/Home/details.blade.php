@@ -125,7 +125,7 @@
                             </div><!-- ticket-price -->
                         </div><!-- ticket-type -->
 
-                        <form class="flex align-items-center" id="reservation-form" method="post" action="{{route('reservation.store')}}">
+                        <form class="flex align-items-center" id="reservation-form" method="post" action="{{route('reservations.store')}}">
                             @csrf
                             <div class="number-of-tickets flex justify-content-between align-items-center">
                                 <span class="decrease-ticket">-</span>

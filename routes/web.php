@@ -36,25 +36,42 @@ Route::get('/organisators', function () {
 
 
 
-Route::get('/forget-password', function () {
-    return view('Auth.forgotPassword');
+
+Route::middleware('guest')->group(function () {
+    Route::get('login', [AuthController::class, 'LoginPage'])->name('login.page')->middleware('guest');
+    Route::get('register', [AuthController::class, 'RegisterPage'])->name('register.page');
+    Route::post('login', [AuthController::class, 'login'])->name('login');
+    Route::post('register', [AuthController::class, 'register'])->name('register');
+    Route::get('/forget-password', function () {
+        return view('Auth.forgotPassword');
+    });
 });
 
-Route::get('login',[AuthController::class,'LoginPage'])->name('login.page')->middleware('guest');
-Route::get('register',[AuthController::class,'RegisterPage'])->name('register.page');
-Route::post('login',[AuthController::class,'login'])->name('login');
-Route::post('register',[AuthController::class,'register'])->name('register');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-///
 
-Route::resources([
-    'categories' => CategoryController::class,
-    'events' => EventController::class,
-    'users' => UserController::class,
-    'reservation' => ReservationController::class,
-]);
-Route::get('my-events',[EventController::class,'myEvents'])->name('my.events');
+    Route::middleware('auth')->group(function () {
+        Route::post('reservations',[ReservationController::class,'store'])->name('reservations.store');
+        Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+    });
+
+
+    Route::middleware(['auth','can:isAdmin'])->group(function () {
+        Route::resource('categories', CategoryController::class);
+        Route::resource('users', UserController::class);
+        Route::get('reservations',[ReservationController::class,'index'])->name('reservations.index');
+        Route::patch('events/{event}',[EventController::class,'update'])->name('events.update');
+
+    });
+
+    Route::middleware(['auth','can:isOrganisator'])->group(function () {
+        Route::resource('events', EventController::class);
+        Route::get('my-events',[EventController::class,'myEvents'])->name('my.events');
+        Route::get('my-reservations',[ReservationController::class,'myReservation'])->name('my.reservations');
+        Route::patch('reservations/{reservation}',[ReservationController::class,'update'])->name('reservations.update');
+
+    });
+
+
 
 
 

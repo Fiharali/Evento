@@ -6,6 +6,7 @@ use App\Models\Reservation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -14,57 +15,35 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
+        $reservations=Reservation::paginate(3);
+        return view('Admin.reservation.index',compact('reservations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreReservationRequest $request)
     {
-        //
-
         Reservation::create($request->all());
         return redirect()->back()->with(['success'=>'success']);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Reservation $reservation)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Reservation $reservation)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateReservationRequest $request, Reservation $reservation)
     {
-        //
+        if ($reservation->status == 0) {
+            $reservation->status = (string) Reservation::IS_APPROVE;
+            $message = 'Reservation approved successfully.';
+        } else {
+            $reservation->status = (string) Reservation::IS_PENDING;
+            $message = 'Reservation refused successfully.';
+        }
+
+        $reservation->save();
+        return redirect()->back()->with('success', $message);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Reservation $reservation)
-    {
-        //
+
+    public function myReservation(){
+        $reservations = Reservation::where('user_id', Auth::id())->paginate(3);
+        return view('Admin.reservation.index',compact('reservations'));
     }
+
 }
+
