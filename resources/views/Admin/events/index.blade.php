@@ -185,7 +185,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="p-6 space-y-6">
-                                                <form action="{{route('events.update',$event->id)}}" method="post">
+                                                <form action="{{ Auth::user()->can('isAdmin') ? route('admin.events.update', $event->id) : route('events.update', $event->id) }}" method="POST">
                                                     @csrf
                                                     @method('patch')
                                                     <div class="grid grid-cols-6 gap-6">

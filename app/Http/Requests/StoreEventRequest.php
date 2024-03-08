@@ -29,7 +29,7 @@ class StoreEventRequest extends FormRequest
             'price' => 'required|numeric',
             'place' => 'required',
             'places_number' => 'required|numeric',
-            'date' => 'required|date',
+            'date' => 'required|date|after:today',
             'category_id' => 'required',
             'description' => 'required',
             'image' => 'required',

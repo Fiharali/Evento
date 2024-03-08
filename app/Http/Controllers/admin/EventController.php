@@ -26,16 +26,16 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEventRequest $request)
-    {
-
-       $event= Event::create(array_merge($request->all(),['user_id' => Auth::id()]));
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $event->addMedia($file)->toMediaCollection('images');
-        }
-        return redirect()->back()->with(['success' =>' event add successful']);
-    }
+//    public function store(StoreEventRequest $request)
+//    {
+//
+//       $event= Event::create(array_merge($request->all(),['user_id' => Auth::id()]));
+//        if ($request->hasFile('image')) {
+//            $file = $request->file('image');
+//            $event->addMedia($file)->toMediaCollection('images');
+//        }
+//        return redirect()->back()->with(['success' =>' event add successful']);
+//    }
 
 
 
@@ -43,10 +43,6 @@ class EventController extends Controller
     public function update(UpdateEventRequest $request, Event $event)
     {
         $event->update($request->all());
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $event->addMedia($file)->toMediaCollection('images');
-        }
         return redirect()->back()->with(['success' =>' Event updated successful']);
     }
 
@@ -60,9 +56,9 @@ class EventController extends Controller
     }
 
 
-    public function myEvents(){
-        $events = Event::where('user_id', Auth::id())->paginate(3);
-        $categories=Category::all();
-        return view('Admin.events.index',compact('events','categories'));
-    }
+//    public function myEvents(){
+//        $events = Event::where('user_id', Auth::id())->paginate(3);
+//        $categories=Category::all();
+//        return view('Admin.events.index',compact('events','categories'));
+//    }
 }

@@ -26,8 +26,13 @@ class ReservationController extends Controller
     {
         Reservation::create($request->all());
         if ($request->status==1){
+
             $event = Event::find($request->event_id);
+
+            $event->decrement('places_number', $request->number_ticket);
+
             $pdf = PDF::loadView('Home.ticket.ticket', ['event' => $event]);
+
             return $pdf->download('ticket.pdf');
            // return redirect()->back()->with(['success'=>'Your Reservation has Completed With Success , You Can Get Your Ticket Now  ']);
 
@@ -40,6 +45,10 @@ class ReservationController extends Controller
     {
         if ($reservation->status == 0) {
             $reservation->status = (string) Reservation::IS_APPROVE;
+
+            $event = Event::find($reservation->event_id);
+            $event->decrement('places_number', $reservation->number_ticket);
+
             $message = 'Reservation approved successfully.';
         } else {
             $reservation->status = (string) Reservation::IS_PENDING;

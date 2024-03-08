@@ -111,7 +111,7 @@
 
                                 <div class="single-event-map">
                                     <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=university of san francisco&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                                    <img src="{{ $event->getFirstMediaUrl('images') }}" alt="Event Image">
+                                    <img src="{{ $event->getFirstMediaUrl('images') }}"  class="w-75 mx-auto mt-5" alt="Event Image" style="">
                                 </div>
 
                             </div>
@@ -146,7 +146,7 @@
                                 <span class="increase-ticket">+</span>
                             </div><!-- number-of-tickets -->
                             <div class="clear-ticket-count">Clear</div>
-                            <input type="submit"  value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"><!-- btn -->
+                            <input type="submit"  value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0 " @disabled($event->places_number <= 0 || $event->date < now())><!-- btn -->
                         </form><!-- flex -->
                     </div><!-- ticket-row -->
 

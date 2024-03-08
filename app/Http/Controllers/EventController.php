@@ -13,7 +13,7 @@ class EventController extends Controller
 
 
     public function index(){
-        $events = Event::all();
+        $events = Event::where('status',1)->get();
         $categories=Category::all();
         return view('Home.index',compact('events','categories'));
     }

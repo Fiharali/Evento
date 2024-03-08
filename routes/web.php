@@ -58,21 +58,23 @@ Route::middleware('guest')->group(function () {
     Route::middleware(['auth','can:isAdmin'])->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('users', UserController::class);
+
         Route::get('reservations',[ReservationController::class,'index'])->name('reservations.index');
-        Route::get('events',[EventController::class,'index'])->name('events.index');
-        Route::patch('events/{event}',[EventController::class,'update'])->name('events.update');
 
-
-
+        Route::get('admin-events',[EventController::class,'index'])->name('admin.events.index');
+        Route::patch('admin-events/{event}',[EventController::class,'update'])->name('admin.events.update');
     });
 
     Route::middleware(['auth','can:isOrganisator'])->group(function () {
-        Route::resource('events', EventController::class)->except('index');
-        Route::get('my-events',[EventController::class,'myEvents'])->name('my.events');
+        Route::resource('events', \App\Http\Controllers\organizer\EventController::class)->except(['index']);
+        Route::get('my-events',[\App\Http\Controllers\organizer\EventController::class,'myEvents'])->name('my.events');
         Route::get('my-reservations',[ReservationController::class,'myReservation'])->name('my.reservations');
         Route::patch('reservations/{reservation}',[ReservationController::class,'update'])->name('reservations.update');
 
+
     });
+
+
 
 
 
