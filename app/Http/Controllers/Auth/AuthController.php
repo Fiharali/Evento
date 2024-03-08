@@ -21,8 +21,15 @@ class AuthController extends Controller
         $validatedData = $request->validated();
 
         if (Auth::attempt($validatedData)) {
+$user=Auth::user();
+            if ($user->status == 0) {
+                Auth::logout(); // Log out the user
+                return back()->withInput()->withErrors([
+                    'email' => 'Your account is inactive. Please contact the administrator.'
+                ]);
 
-            $user = Auth::user();
+            }
+
             if ($user->roles->contains('name', 'admin') || $user->roles->contains('name', 'organisator')) {
                 return redirect('/');
             } else {
