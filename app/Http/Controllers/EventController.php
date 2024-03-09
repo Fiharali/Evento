@@ -14,7 +14,7 @@ class EventController extends Controller
 
 
     public function index(){
-        $events = Event::where('status',1)->get();
+        $events = Event::where('status',1)->where('date','>',now())->get();
         $categories=Category::all();
         $users=User::where('status', 1)
             ->withCount('events')

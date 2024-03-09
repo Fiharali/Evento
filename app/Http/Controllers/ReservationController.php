@@ -67,10 +67,15 @@ class ReservationController extends Controller
         return view('Admin.reservation.index',compact('reservations'));
     }
 
-    public function getTicket($eventId)
-    {
 
-        $event = Event::find($eventId);
+
+    public  function  userReservations(){
+        $reservations=Reservation::where('user_id',Auth::id())->get();
+        return view('Home.resrvations',compact('reservations'));
+    }
+
+    public function userTicket(Event $event)
+    {
         $pdf = PDF::loadView('Home.ticket.ticket', ['event' => $event]);
         return $pdf->download('ticket.pdf');
     }

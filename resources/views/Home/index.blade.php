@@ -77,88 +77,88 @@
 
 <div class="content-section" style="background: url('assets/images/middle-cover.jpg')">
     <div class="container">
-{{--        <div class="row">--}}
-{{--            <div class="col-12">--}}
-{{--                <div class="lineup-artists-headline">--}}
-{{--                    <div class="entry-title">--}}
-{{--                        <p>JUST THE BEST</p>--}}
-{{--                        <h2>The Lineup Artists-Headliners</h2>--}}
-{{--                    </div><!-- entry-title -->--}}
+        <div class="row">
+            <div class="col-12">
+                <div class="lineup-artists-headline">
+                    <div class="entry-title">
+                        <p>JUST THE BEST</p>
+                        <h2>The Lineup Artists-Headliners</h2>
+                    </div><!-- entry-title -->
 
-{{--                    <div class="lineup-artists">--}}
-{{--                        <div class="lineup-artists-wrap flex flex-wrap">--}}
-{{--                            <figure class="featured-image">--}}
-{{--                                <a href="#"> <img src="{{asset('assets/images/black-chick.jpg')}}" alt=""> </a>--}}
-{{--                            </figure><!-- featured-image -->--}}
+                    <div class="lineup-artists">
+                        <div class="lineup-artists-wrap flex flex-wrap">
+                            <figure class="featured-image">
+                                <a href="#"> <img src="{{asset('assets/images/black-chick.jpg')}}" alt=""> </a>
+                            </figure><!-- featured-image -->
 
-{{--                            <div class="lineup-artists-description">--}}
-{{--                                <div class="lineup-artists-description-container">--}}
-{{--                                    <div class="entry-title">--}}
-{{--                                        Jamila Williams--}}
-{{--                                    </div><!-- entry-title -->--}}
+                            <div class="lineup-artists-description">
+                                <div class="lineup-artists-description-container">
+                                    <div class="entry-title">
+                                        Jamila Williams
+                                    </div><!-- entry-title -->
 
-{{--                                    <div class="entry-content">--}}
-{{--                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>--}}
-{{--                                    </div><!-- entry-content -->--}}
+                                    <div class="entry-content">
+                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>
+                                    </div><!-- entry-content -->
 
-{{--                                    <div class="box-link">--}}
-{{--                                        <a href=""><img src="{{asset('assets/images/box.jpg')}}" alt=""></a>--}}
-{{--                                    </div><!-- box-link -->--}}
-{{--                                </div><!-- lineup-artists-description-container -->--}}
-{{--                            </div><!-- lineup-artists-description -->--}}
-{{--                        </div><!-- lineup-artists-wrap -->--}}
+                                    <div class="box-link">
+                                        <a href=""><img src="{{asset('assets/images/box.jpg')}}" alt=""></a>
+                                    </div><!-- box-link -->
+                                </div><!-- lineup-artists-description-container -->
+                            </div><!-- lineup-artists-description -->
+                        </div><!-- lineup-artists-wrap -->
 
-{{--                        <div class="lineup-artists-wrap flex flex-wrap">--}}
-{{--                            <div class="lineup-artists-description">--}}
-{{--                                <figure class="featured-image d-md-none">--}}
-{{--                                    <a href="#"> <img src="{{asset('assets/images/mathew-kane.jpg')}}" alt=""> </a>--}}
-{{--                                </figure><!-- featured-image -->--}}
+                        <div class="lineup-artists-wrap flex flex-wrap">
+                            <div class="lineup-artists-description">
+                                <figure class="featured-image d-md-none">
+                                    <a href="#"> <img src="{{asset('assets/images/mathew-kane.jpg')}}" alt=""> </a>
+                                </figure><!-- featured-image -->
 
-{{--                                <div class="lineup-artists-description-container">--}}
-{{--                                    <div class="entry-title">--}}
-{{--                                        Sandra Superstar--}}
-{{--                                    </div><!-- entry-title -->--}}
+                                <div class="lineup-artists-description-container">
+                                    <div class="entry-title">
+                                        Sandra Superstar
+                                    </div><!-- entry-title -->
 
-{{--                                    <div class="entry-content">--}}
-{{--                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>--}}
-{{--                                    </div><!-- entry-content -->--}}
+                                    <div class="entry-content">
+                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>
+                                    </div><!-- entry-content -->
 
-{{--                                    <div class="box-link">--}}
-{{--                                        <a href="#"><img src="{{asset('assets/images/box.jpg')}}" alt=""></a>--}}
-{{--                                    </div><!-- box-link -->--}}
-{{--                                </div><!-- lineup-artists-description-container -->--}}
-{{--                            </div><!-- lineup-artists-description -->--}}
+                                    <div class="box-link">
+                                        <a href="#"><img src="{{asset('assets/images/box.jpg')}}" alt=""></a>
+                                    </div><!-- box-link -->
+                                </div><!-- lineup-artists-description-container -->
+                            </div><!-- lineup-artists-description -->
 
-{{--                            <figure class="featured-image d-none d-md-block">--}}
-{{--                                <a href="#"> <img src="{{asset('assets/images/mathew-kane.jpg')}}" alt=""> </a>--}}
-{{--                            </figure><!-- featured-image -->--}}
-{{--                        </div><!-- lineup-artists-wrap -->--}}
+                            <figure class="featured-image d-none d-md-block">
+                                <a href="#"> <img src="{{asset('assets/images/mathew-kane.jpg')}}" alt=""> </a>
+                            </figure><!-- featured-image -->
+                        </div><!-- lineup-artists-wrap -->
 
-{{--                        <div class="lineup-artists-wrap flex flex-wrap">--}}
-{{--                            <figure class="featured-image">--}}
-{{--                                <a href="#"> <img src="{{asset('assets/images/eric-ward.jpg')}}" alt=""> </a>--}}
-{{--                            </figure><!-- featured-image -->--}}
+                        <div class="lineup-artists-wrap flex flex-wrap">
+                            <figure class="featured-image">
+                                <a href="#"> <img src="{{asset('assets/images/eric-ward.jpg')}}" alt=""> </a>
+                            </figure><!-- featured-image -->
 
-{{--                            <div class="lineup-artists-description">--}}
-{{--                                <div class="lineup-artists-description-container">--}}
-{{--                                    <div class="entry-title">--}}
-{{--                                        DJ Crazyhead--}}
-{{--                                    </div><!-- entry-title -->--}}
+                            <div class="lineup-artists-description">
+                                <div class="lineup-artists-description-container">
+                                    <div class="entry-title">
+                                        DJ Crazyhead
+                                    </div><!-- entry-title -->
 
-{{--                                    <div class="entry-content">--}}
-{{--                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>--}}
-{{--                                    </div><!-- entry-content -->--}}
+                                    <div class="entry-content">
+                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>
+                                    </div><!-- entry-content -->
 
-{{--                                    <div class="box-link">--}}
-{{--                                        <a href="#"> <img src="{{asset('assets/images/box.jpg')}}" alt=""></a>--}}
-{{--                                    </div><!-- box-link -->--}}
-{{--                                </div><!-- lineup-artists-description-container -->--}}
-{{--                            </div><!-- lineup-artists-description -->--}}
-{{--                        </div><!-- lineup-artists-wrap -->--}}
-{{--                    </div><!-- lineup-artists -->--}}
-{{--                </div><!-- lineup-artists-headline -->--}}
-{{--            </div><!-- col-12 -->--}}
-{{--        </div><!-- row -->--}}
+                                    <div class="box-link">
+                                        <a href="#"> <img src="{{asset('assets/images/box.jpg')}}" alt=""></a>
+                                    </div><!-- box-link -->
+                                </div><!-- lineup-artists-description-container -->
+                            </div><!-- lineup-artists-description -->
+                        </div><!-- lineup-artists-wrap -->
+                    </div><!-- lineup-artists -->
+                </div><!-- lineup-artists-headline -->
+            </div><!-- col-12 -->
+        </div><!-- row -->
 
         <div class="row">
             <div class="col-12">
@@ -223,7 +223,7 @@
                     <div class="swiper-slide col-lg-4 col-md-6 col-sm-12 mt-2">
                         <div class="next-event-content">
                             <figure class="featured-image">
-                                <img src="{{ $event->getFirstMediaUrl('images') }}" alt="evebt" class="img-fluid d-block" style="height: 200px;">
+                                <img src="{{ $event->getFirstMediaUrl('images') }}" alt="evebt" class="img-fluid d-block" style="height: 260px;">
                                 <a href="{{route('event.details',$event->id)}}" class="entry-content flex flex-column justify-content-center align-items-center">
                                     <h3>{{$event->title}}</h3>
                                     <p>{{$event->place}}</p>
@@ -342,7 +342,7 @@
                     <div class="swiper-slide col-lg-4 col-md-6 col-sm-12 mt-2">
                         <div class="next-event-content">
                             <figure class="featured-image">
-                                <img src="${event.imageUrl}" alt="{{ $event->title }}" class="img-fluid d-block" style="height: 260px;">
+                                <img src="${event.imageUrl}" alt="event" class="img-fluid d-block" style="height: 260px;">
                                 <a href="/events/${event.id}" class="entry-content flex flex-column justify-content-center align-items-center">
                                     <h3>${event.title}</h3>
                                     <p>${event.place}</p>

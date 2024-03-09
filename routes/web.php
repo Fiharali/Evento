@@ -27,9 +27,7 @@ Route::get('search',[\App\Http\Controllers\EventController::class,'search'])->na
 Route::get('/about', function () {
     return view('Home.about');
 });
-Route::get('/organisators', function () {
-    return view('Home.organisator');
-});
+
 
 
 
@@ -55,9 +53,11 @@ Route::middleware('guest')->group(function () {
 
 
     Route::middleware('auth')->group(function () {
+        Route::get('user-reservations',[ReservationController::class,'userReservations'])->name('user.reservations');
         Route::post('reservations',[ReservationController::class,'store'])->name('reservations.store');
         Route::get('get-ticket',[ReservationController::class,'ticket'])->name('reservations.ticket');
-        Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+        Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+        Route::post('user-ticket/{event}', [ReservationController::class, 'userTicket'])->name('user.ticket');
     });
 
 
