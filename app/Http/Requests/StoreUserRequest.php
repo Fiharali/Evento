@@ -28,6 +28,7 @@ class StoreUserRequest extends FormRequest
             'role' => ['required'],
             'status' => ['required'],
             'password' => ['required', 'min:8', 'confirmed'],
+            'profile' => 'mimes:jpeg,png,jpg|nullable',
         ];
     }
 }

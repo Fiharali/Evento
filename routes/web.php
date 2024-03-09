@@ -81,9 +81,7 @@ Route::middleware('guest')->group(function () {
 
     });
 
-Route::get('/test',function (){
-    Mail::to('fiharali0@gmail.com')->send(new WelcomeMail());
-})->name('test');
+
 
 
 

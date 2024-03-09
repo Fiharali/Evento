@@ -19,7 +19,7 @@
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white text-center">
             Create a New Account
         </h2>
-        <form class="space-y-6" action="{{ route('register') }}" method="post">
+        <form class="space-y-6" action="{{ route('register') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div>
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
@@ -43,6 +43,13 @@
                     <option value="2" {{ old('role') == '2' ? 'selected' : '' }}>Organisator</option>
                 </select>
                 @error('role')
+                <p class="text-sm text-red-600 dark:text-red-500"> {{ $message }}</p>
+                @enderror
+            </div>
+            <div>
+                <label for="profile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Profile</label>
+                <input type="file" name="profile" id="profile"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                @error('profile')
                 <p class="text-sm text-red-600 dark:text-red-500"> {{ $message }}</p>
                 @enderror
             </div>

@@ -32,6 +32,8 @@ class UserController extends Controller
             'status' => $request->status,
             'password' => Hash::make($request->password),
         ]);
+
+
         $user->roles()->attach($request->role);
         return redirect()->back()->with(['success' =>' User add successful']);
     }

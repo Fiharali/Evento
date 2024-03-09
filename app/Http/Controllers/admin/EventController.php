@@ -26,16 +26,16 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-//    public function store(StoreEventRequest $request)
-//    {
-//
-//       $event= Event::create(array_merge($request->all(),['user_id' => Auth::id()]));
-//        if ($request->hasFile('image')) {
-//            $file = $request->file('image');
-//            $event->addMedia($file)->toMediaCollection('images');
-//        }
-//        return redirect()->back()->with(['success' =>' event add successful']);
-//    }
+    public function store(StoreEventRequest $request)
+    {
+
+       $event= Event::create(array_merge($request->all(),['user_id' => Auth::id()]));
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $event->addMedia($file)->toMediaCollection('images');
+        }
+        return redirect()->back()->with(['success' =>' event add successful']);
+    }
 
 
 

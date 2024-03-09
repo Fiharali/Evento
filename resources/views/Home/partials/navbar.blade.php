@@ -20,12 +20,21 @@
                     <li><a href="about">About</a></li>
                     <li><a href="organisators">Organisators</a></li>
                     @auth
-                        <li>
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="bg-transparent text-white border-0 ms-3" >LogOut</button>
-                            </form>
-                        </li>
+
+                       @can('isAdmin')
+                        <li><a href="/admin-events">Dashboard</a></li>
+                        @endcan
+                        @can('isOrganisator')
+                        <li><a href="/my-events">My Event</a></li>
+                        @endcan
+
+                           <li>
+                               <form action="{{ route('logout') }}" method="POST">
+                                   @csrf
+                                   <button type="submit" class="bg-transparent text-white border-0 mx-5 " >LogOut</button>
+                               </form>
+                           </li>
+
                     @else
                         <li><a href="/login">Login</a></li>
                         <li><a href="/register" class="">Get Started</a></li>

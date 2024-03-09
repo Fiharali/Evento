@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Mail\WelcomeMail;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
@@ -58,6 +60,13 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        if ($request->hasFile('profile')) {
+            $file = $request->file('profile');
+            $user->addMedia($file)->toMediaCollection('profile');
+        }
+
+        Mail::to($request->email)->send(new WelcomeMail());
+
         $user->roles()->attach($request->role);
         Auth::login($user);
 

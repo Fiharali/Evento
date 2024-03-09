@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -15,7 +16,12 @@ class EventController extends Controller
     public function index(){
         $events = Event::where('status',1)->get();
         $categories=Category::all();
-        return view('Home.index',compact('events','categories'));
+        $users=User::where('status', 1)
+            ->withCount('events')
+            ->orderByDesc('events_count')
+            ->limit(8)
+            ->get();
+        return view('Home.index',compact('events','categories','users'));
     }
 
 

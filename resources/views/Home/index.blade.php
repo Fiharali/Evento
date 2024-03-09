@@ -77,88 +77,88 @@
 
 <div class="content-section" style="background: url('assets/images/middle-cover.jpg')">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="lineup-artists-headline">
-                    <div class="entry-title">
-                        <p>JUST THE BEST</p>
-                        <h2>The Lineup Artists-Headliners</h2>
-                    </div><!-- entry-title -->
+{{--        <div class="row">--}}
+{{--            <div class="col-12">--}}
+{{--                <div class="lineup-artists-headline">--}}
+{{--                    <div class="entry-title">--}}
+{{--                        <p>JUST THE BEST</p>--}}
+{{--                        <h2>The Lineup Artists-Headliners</h2>--}}
+{{--                    </div><!-- entry-title -->--}}
 
-                    <div class="lineup-artists">
-                        <div class="lineup-artists-wrap flex flex-wrap">
-                            <figure class="featured-image">
-                                <a href="#"> <img src="{{asset('assets/images/black-chick.jpg')}}" alt=""> </a>
-                            </figure><!-- featured-image -->
+{{--                    <div class="lineup-artists">--}}
+{{--                        <div class="lineup-artists-wrap flex flex-wrap">--}}
+{{--                            <figure class="featured-image">--}}
+{{--                                <a href="#"> <img src="{{asset('assets/images/black-chick.jpg')}}" alt=""> </a>--}}
+{{--                            </figure><!-- featured-image -->--}}
 
-                            <div class="lineup-artists-description">
-                                <div class="lineup-artists-description-container">
-                                    <div class="entry-title">
-                                        Jamila Williams
-                                    </div><!-- entry-title -->
+{{--                            <div class="lineup-artists-description">--}}
+{{--                                <div class="lineup-artists-description-container">--}}
+{{--                                    <div class="entry-title">--}}
+{{--                                        Jamila Williams--}}
+{{--                                    </div><!-- entry-title -->--}}
 
-                                    <div class="entry-content">
-                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>
-                                    </div><!-- entry-content -->
+{{--                                    <div class="entry-content">--}}
+{{--                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>--}}
+{{--                                    </div><!-- entry-content -->--}}
 
-                                    <div class="box-link">
-                                        <a href=""><img src="{{asset('assets/images/box.jpg')}}" alt=""></a>
-                                    </div><!-- box-link -->
-                                </div><!-- lineup-artists-description-container -->
-                            </div><!-- lineup-artists-description -->
-                        </div><!-- lineup-artists-wrap -->
+{{--                                    <div class="box-link">--}}
+{{--                                        <a href=""><img src="{{asset('assets/images/box.jpg')}}" alt=""></a>--}}
+{{--                                    </div><!-- box-link -->--}}
+{{--                                </div><!-- lineup-artists-description-container -->--}}
+{{--                            </div><!-- lineup-artists-description -->--}}
+{{--                        </div><!-- lineup-artists-wrap -->--}}
 
-                        <div class="lineup-artists-wrap flex flex-wrap">
-                            <div class="lineup-artists-description">
-                                <figure class="featured-image d-md-none">
-                                    <a href="#"> <img src="{{asset('assets/images/mathew-kane.jpg')}}" alt=""> </a>
-                                </figure><!-- featured-image -->
+{{--                        <div class="lineup-artists-wrap flex flex-wrap">--}}
+{{--                            <div class="lineup-artists-description">--}}
+{{--                                <figure class="featured-image d-md-none">--}}
+{{--                                    <a href="#"> <img src="{{asset('assets/images/mathew-kane.jpg')}}" alt=""> </a>--}}
+{{--                                </figure><!-- featured-image -->--}}
 
-                                <div class="lineup-artists-description-container">
-                                    <div class="entry-title">
-                                        Sandra Superstar
-                                    </div><!-- entry-title -->
+{{--                                <div class="lineup-artists-description-container">--}}
+{{--                                    <div class="entry-title">--}}
+{{--                                        Sandra Superstar--}}
+{{--                                    </div><!-- entry-title -->--}}
 
-                                    <div class="entry-content">
-                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>
-                                    </div><!-- entry-content -->
+{{--                                    <div class="entry-content">--}}
+{{--                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>--}}
+{{--                                    </div><!-- entry-content -->--}}
 
-                                    <div class="box-link">
-                                        <a href="#"><img src="{{asset('assets/images/box.jpg')}}" alt=""></a>
-                                    </div><!-- box-link -->
-                                </div><!-- lineup-artists-description-container -->
-                            </div><!-- lineup-artists-description -->
+{{--                                    <div class="box-link">--}}
+{{--                                        <a href="#"><img src="{{asset('assets/images/box.jpg')}}" alt=""></a>--}}
+{{--                                    </div><!-- box-link -->--}}
+{{--                                </div><!-- lineup-artists-description-container -->--}}
+{{--                            </div><!-- lineup-artists-description -->--}}
 
-                            <figure class="featured-image d-none d-md-block">
-                                <a href="#"> <img src="{{asset('assets/images/mathew-kane.jpg')}}" alt=""> </a>
-                            </figure><!-- featured-image -->
-                        </div><!-- lineup-artists-wrap -->
+{{--                            <figure class="featured-image d-none d-md-block">--}}
+{{--                                <a href="#"> <img src="{{asset('assets/images/mathew-kane.jpg')}}" alt=""> </a>--}}
+{{--                            </figure><!-- featured-image -->--}}
+{{--                        </div><!-- lineup-artists-wrap -->--}}
 
-                        <div class="lineup-artists-wrap flex flex-wrap">
-                            <figure class="featured-image">
-                                <a href="#"> <img src="{{asset('assets/images/eric-ward.jpg')}}" alt=""> </a>
-                            </figure><!-- featured-image -->
+{{--                        <div class="lineup-artists-wrap flex flex-wrap">--}}
+{{--                            <figure class="featured-image">--}}
+{{--                                <a href="#"> <img src="{{asset('assets/images/eric-ward.jpg')}}" alt=""> </a>--}}
+{{--                            </figure><!-- featured-image -->--}}
 
-                            <div class="lineup-artists-description">
-                                <div class="lineup-artists-description-container">
-                                    <div class="entry-title">
-                                        DJ Crazyhead
-                                    </div><!-- entry-title -->
+{{--                            <div class="lineup-artists-description">--}}
+{{--                                <div class="lineup-artists-description-container">--}}
+{{--                                    <div class="entry-title">--}}
+{{--                                        DJ Crazyhead--}}
+{{--                                    </div><!-- entry-title -->--}}
 
-                                    <div class="entry-content">
-                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>
-                                    </div><!-- entry-content -->
+{{--                                    <div class="entry-content">--}}
+{{--                                        <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>--}}
+{{--                                    </div><!-- entry-content -->--}}
 
-                                    <div class="box-link">
-                                        <a href="#"> <img src="{{asset('assets/images/box.jpg')}}" alt=""></a>
-                                    </div><!-- box-link -->
-                                </div><!-- lineup-artists-description-container -->
-                            </div><!-- lineup-artists-description -->
-                        </div><!-- lineup-artists-wrap -->
-                    </div><!-- lineup-artists -->
-                </div><!-- lineup-artists-headline -->
-            </div><!-- col-12 -->
-        </div><!-- row -->
+{{--                                    <div class="box-link">--}}
+{{--                                        <a href="#"> <img src="{{asset('assets/images/box.jpg')}}" alt=""></a>--}}
+{{--                                    </div><!-- box-link -->--}}
+{{--                                </div><!-- lineup-artists-description-container -->--}}
+{{--                            </div><!-- lineup-artists-description -->--}}
+{{--                        </div><!-- lineup-artists-wrap -->--}}
+{{--                    </div><!-- lineup-artists -->--}}
+{{--                </div><!-- lineup-artists-headline -->--}}
+{{--            </div><!-- col-12 -->--}}
+{{--        </div><!-- row -->--}}
 
         <div class="row">
             <div class="col-12">
@@ -169,77 +169,16 @@
                     </div><!-- entry-title -->
 
                     <div class="row the-complete-lineup-artists">
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <a href="#"> <img src="{{asset('assets/images/image-1.jpg')}}" alt=""> </a>
-                                <a href="#" class="box-link"> <img src="{{asset('assets/images/box.jpg')}}" alt=""> </a>
-                            </figure><!-- featured-image -->
+                        @foreach($users as $user)
+                            <div class="col-6 col-md-4 col-lg-3 artist-single">
+                                <figure class="featured-image">
+                                    <a href="#"> <img src="{{$user->getFirstMediaUrl('profile')}}" alt=""> </a>
+                                    <a href="#" class="box-link"> <img src="{{ asset('assets/images/box.jpg') }}" alt=""> </a>
+                                </figure><!-- featured-image -->
 
-                            <h2>Miska Smith</h2>
-                        </div><!-- artist-single -->
-
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <a href="#"> <img src="{{asset('assets/images/image-2.jpg')}}" alt=""> </a>
-                                <a href="#" class="box-link"> <img src="{{asset('assets/images/box.jpg')}}" alt=""> </a>
-                            </figure><!-- featured-image -->
-
-                            <h2>Hayley Down</h2>
-                        </div><!-- artist-single -->
-
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <a href="#"> <img src="assets/images/image-3.jpg" alt=""> </a>
-                                <a href="#" class="box-link"> <img src="{{asset('assets/images/box.jpg')}}" alt=""> </a>
-                            </figure><!-- featured-image -->
-
-                            <h2>The Band Song</h2>
-                        </div><!-- artist-single -->
-
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <a href="#"> <img src="assets/images/image-4.jpg" alt=""> </a>
-                                <a href="#" class="box-link"> <img src="assets/images/box.jpg" alt=""> </a>
-                            </figure><!-- featured-image -->
-
-                            <h2>Pink Machine</h2>
-                        </div><!-- artist-single -->
-
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <a href="#"> <img src="assets/images/image-5.jpg" alt=""> </a>
-                                <a href="#" class="box-link"> <img src="assets/images/box.jpg" alt=""> </a>
-                            </figure><!-- featured-image -->
-
-                            <h2>Brasil Band</h2>
-                        </div><!-- artist-single -->
-
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <a href="#"> <img src="assets/images/image-6.jpg" alt=""> </a>
-                                <a href="#" class="box-link"> <img src="assets/images/box.jpg" alt=""> </a>
-                            </figure><!-- featured-image -->
-
-                            <h2>Mickey</h2>
-                        </div><!-- artist-single -->
-
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <a href="#"> <img src="assets/images/image-7.jpg" alt=""> </a>
-                                <a href="#" class="box-link"> <img src="assets/images/box.jpg" alt=""> </a>
-                            </figure><!-- featured-image -->
-
-                            <h2>DJ Girl</h2>
-                        </div><!-- artist-single -->
-
-                        <div class="col-6 col-md-4 col-lg-3 artist-single">
-                            <figure class="featured-image">
-                                <a href="#"> <img src="assets/images/image-8.jpg" alt=""> </a>
-                                <a href="#" class="box-link"> <img src="assets/images/box.jpg" alt=""> </a>
-                            </figure><!-- featured-image -->
-
-                            <h2>Stan Smith</h2>
-                        </div><!-- artist-single -->
+                                <h2>{{ $user->name }}</h2>
+                            </div><!-- artist-single -->
+                        @endforeach
                     </div><!-- the-complete-lineup-artists -->
 
                     <div class="row justify-content-center">
@@ -284,7 +223,7 @@
                     <div class="swiper-slide col-lg-4 col-md-6 col-sm-12 mt-2">
                         <div class="next-event-content">
                             <figure class="featured-image">
-                                <img src="{{ $event->getFirstMediaUrl('images') }}" alt="evebt" class="img-fluid d-block" style="height: 260px;">
+                                <img src="{{ $event->getFirstMediaUrl('images') }}" alt="evebt" class="img-fluid d-block" style="height: 200px;">
                                 <a href="{{route('event.details',$event->id)}}" class="entry-content flex flex-column justify-content-center align-items-center">
                                     <h3>{{$event->title}}</h3>
                                     <p>{{$event->place}}</p>
