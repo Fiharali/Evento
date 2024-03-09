@@ -44,6 +44,9 @@
             <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
                 You dont  have an account? <a href="{{ route('register.page') }}" class="text-primary-700 hover:underline dark:text-primary-500">Register here</a>
             </div>
+            <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
+                Are you forgot your password? <a href="/forgot-password" class="text-primary-700 hover:underline dark:text-primary-500">Click here</a>
+            </div>
         </form>
 
     </div>

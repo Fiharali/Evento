@@ -6,7 +6,8 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeMail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,9 +42,14 @@ Route::middleware('guest')->group(function () {
     Route::get('register', [AuthController::class, 'RegisterPage'])->name('register.page');
     Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::post('register', [AuthController::class, 'register'])->name('register');
-    Route::get('/forget-password', function () {
-        return view('Auth.forgotPassword');
-    });
+
+
+    Route::get('/forgot-password', [AuthController::class, 'forgetPasswordPage'])->name('forgot.password');
+    Route::get('/reset-password', [AuthController::class, 'resetPasswordPage'])->name('password.reset');
+    Route::post('/reset', [AuthController::class, 'sendResetLink'])->name('password.reset.post');
+    Route::post('/reset-password', [AuthController::class, 'reset'])->name('reset');
+
+
 });
 
 
@@ -61,6 +67,7 @@ Route::middleware('guest')->group(function () {
 
         Route::get('reservations',[ReservationController::class,'index'])->name('reservations.index');
 
+
         Route::get('admin-events',[EventController::class,'index'])->name('admin.events.index');
         Route::patch('admin-events/{event}',[EventController::class,'update'])->name('admin.events.update');
     });
@@ -73,6 +80,11 @@ Route::middleware('guest')->group(function () {
 
 
     });
+
+Route::get('/test',function (){
+    Mail::to('fiharali0@gmail.com')->send(new WelcomeMail());
+})->name('test');
+
 
 
 
