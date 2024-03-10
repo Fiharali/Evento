@@ -78,6 +78,7 @@ Route::middleware('guest')->group(function () {
         Route::resource('events', \App\Http\Controllers\organizer\EventController::class)->except(['index']);
         Route::get('my-events',[\App\Http\Controllers\organizer\EventController::class,'myEvents'])->name('my.events');
         Route::get('my-reservations',[ReservationController::class,'myReservation'])->name('my.reservations');
+        Route::get('my-dashboard',[\App\Http\Controllers\organizer\EventController::class,'myDashboard'])->name('my.dashboard');
         Route::patch('reservations/{reservation}',[ReservationController::class,'update'])->name('reservations.update');
 
 
