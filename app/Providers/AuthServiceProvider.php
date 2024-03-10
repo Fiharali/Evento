@@ -31,5 +31,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isOrganisator', function ($user) {
             return $user->isOrganisator();
         });
+
+        Gate::define('isOwner', function ($user,$event) {
+            return $user->id !=$event->user_id;
+        });
+
+
     }
 }
