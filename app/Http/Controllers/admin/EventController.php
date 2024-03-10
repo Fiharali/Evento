@@ -7,6 +7,8 @@ use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
@@ -61,4 +63,30 @@ class EventController extends Controller
 //        $categories=Category::all();
 //        return view('Admin.events.index',compact('events','categories'));
 //    }
+
+public function adminDashboard(){
+
+    $topUsers = User::withCount('reservations')
+        ->orderByDesc('reservations_count')
+        ->limit(3)
+        ->get();
+
+    $topEvent= Event::withCount('resrvations')
+        ->orderByDesc('resrvations_count')
+        ->limit(3)
+        ->get();
+
+    $reservationAccepted = Reservation::where('status', 1)->count();
+    $reservationPending = Reservation::where('status', 0)->count();
+
+   return view('Admin.dashboard.dashboard',compact('topUsers','topEvent','reservationAccepted','reservationPending'));
+}
+
+    public function static()
+    {
+        $categoriesWithEventCounts = Category::withCount('events')->get();
+        return response()->json($categoriesWithEventCounts);
+    }
+
+
 }

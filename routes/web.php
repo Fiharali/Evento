@@ -66,6 +66,8 @@ Route::middleware('guest')->group(function () {
         Route::resource('users', UserController::class);
 
         Route::get('reservations',[ReservationController::class,'index'])->name('reservations.index');
+        Route::get('admin-dashboard',[EventController::class,'adminDashboard'])->name('admin.dashboard');
+        Route::get('admin-static',[EventController::class,'static'])->name('static');
 
 
         Route::get('admin-events',[EventController::class,'index'])->name('admin.events.index');
